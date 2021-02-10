@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
-function App() {
+import React, { useEffect } from 'react'
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { load } from './action/auth';
+import { Pages } from './components/pages/Pages';
+import { Switch, Route } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
+
+function App({ load, setTheme, theme }) {
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Pages setTheme={setTheme} theme={theme} />
+      </Switch>
+    </>
+
   );
 }
+App.propTypes = {
+  load: PropTypes.func.isRequired,
+};
 
-export default App;
+
+export default connect(null, { load })(App);

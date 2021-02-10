@@ -1,0 +1,12 @@
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const REGISTER = 'REGISTER';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOAD_USER = 'LOAD_USER';
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const JOIN_GAME = 'JOIN_GAME';
+export const QUERY_WITH_ITEM = 'QUERY_WITH_ITEM';
+export const QUERY = 'QUERY';
+export const QUERY_FAIL = 'QUERY_FAIL';
