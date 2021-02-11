@@ -11,7 +11,6 @@ export const login = ({ username, password }, setLoading) => async dispatch => {
             }
         }
         const res = await axios.post(`${backendURL}/authenticate`, { username, password }, config)
-        console.log(res.data.jwt);
         dispatch({ type: LOGIN, payload: res.data.jwt })
     } catch (err) {
         console.log(err.response)

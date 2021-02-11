@@ -11,11 +11,11 @@ const Login = ({ login, auth, history }) => {
         username: ''
     })
     const [loading, setLoading] = useState(false);
-    const [usernameError, setusernameError] = useState(false);
+    const [usernameError, setUsernameError] = useState(false);
     useEffect(() => {
-        if (!/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(body.username))
-            setusernameError(true)
-        else setusernameError(false);
+        if (body.username.length < 6)
+            setUsernameError(true)
+        else setUsernameError(false);
 
         // eslint-disable-next-line
     }, [body.username])
@@ -38,9 +38,10 @@ const Login = ({ login, auth, history }) => {
             <div className="Login">
                 <Form className='mt-5'>
                     <Form.Group controlId="formBasicusername">
-                        <Form.Label>username address</Form.Label>
+                        <Form.Label>Username</Form.Label>
                         <Form.Control size="lg" isInvalid={usernameError} value={body.username} onChange={onChange} name='username' type="username" placeholder="Enter username" />
-                        <Form.Control.Feedback type="invalid">Please fill valid username</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">Username Should Be Greater Than 5 Charachter
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>

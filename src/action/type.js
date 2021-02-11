@@ -10,3 +10,6 @@ export const JOIN_GAME = 'JOIN_GAME';
 export const QUERY_WITH_ITEM = 'QUERY_WITH_ITEM';
 export const QUERY = 'QUERY';
 export const QUERY_FAIL = 'QUERY_FAIL';
+export const JOIN_FAIL = 'JOIN_FAIL';
+export const GAME_START = 'GAME_START';
+export const EXIT_GAME = 'EXIT_GAME';
