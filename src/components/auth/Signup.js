@@ -30,7 +30,7 @@ const Signup = ({ signup, history, auth }) => {
         else setpasswordError(false)
     }, [body.password, body.confirmPassword])
     useEffect(() => {
-        if (!/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(body.username))
+        if (body.username.length < 5)
             setusernameError(true)
         else setusernameError(false);
 

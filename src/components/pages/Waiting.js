@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import MySpinner from '../layout/Spinner';
 import { join, check, cancel } from './../../action/play';
 const Waiting = ({ join, check, history, cancel }) => {
-    const [loading, setLoading] = useState(false)
-
-    const handelJoin = () => {
-        setLoading(true);
-        join();
-    }
 
     const handelCancel = () => {
-        cancel(history, setLoading);
+        cancel(history);
     }
 
     useEffect(() => {
-        check(history, setLoading)
+        check(history)
         const interval = setInterval(() => {
-            check(history, setLoading)
+            check(history)
         }, 5000);
         return () => clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        loading ? <><MySpinner msg={"Waiting For Players"} /><Button onClick={handelCancel}>Cancel</Button> </> :
-            <Button onClick={handelJoin} disabled={loading}>Join Game</Button>
+        <><MySpinner msg={"Waiting For Players"} /><Button onClick={handelCancel}>Cancel</Button> </>
     )
 
 }
