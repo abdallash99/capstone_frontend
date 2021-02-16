@@ -31,7 +31,7 @@ export const signup = (body, setLoading, history) => async dispatch => {
     };
     try {
         const res = await axios.post(`${backendURL}/signup`, body, config)
-        dispatch(setAlert('You have register successfully check your email to vertify it', 'success'));
+        dispatch(setAlert('You have register successfully', 'success'));
         dispatch({ type: REGISTER, payload: res.data })
         history.push('/login')
     } catch (err) {
