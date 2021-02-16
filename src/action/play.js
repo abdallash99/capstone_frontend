@@ -26,7 +26,7 @@ export const check = (history) => async dispatch => {
         history.push('/game')
     } catch (err) {
         console.log(err.response);
-        if (err.response.status !== 404)
+        if (err.response.status === 400)
             history.push('/waiting')
 
         dispatch({ type: QUERY_FAIL, payload: err.response.data.message })
