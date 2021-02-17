@@ -7,6 +7,7 @@ import {
     CLEAR_ERROR
 }
     from '../action/type'
+import setAuthToken from './../utils/setAuthToken';
 const initState = {
     token: null,
     isAuth: false,
@@ -19,6 +20,7 @@ export default function authRed(state = initState, action) {
     switch (action.type) {
         case LOGIN:
             localStorage.setItem('token', action.payload)
+            setAuthToken(action.payload)
             return {
                 ...state,
                 token: action.payload.token,
