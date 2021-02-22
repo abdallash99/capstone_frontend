@@ -14,6 +14,8 @@ export const login = ({ username, password }, setLoading) => async dispatch => {
         dispatch({ type: LOGIN, payload: res.data.jwt })
     } catch (err) {
         console.log(err.response)
+        setLoading(false);
+        dispatch(setAlert(err.response.data.message, 'danger'))
         dispatch({ type: AUTH_ERROR })
     }
 }
@@ -37,6 +39,7 @@ export const signup = (body, setLoading, history) => async dispatch => {
     } catch (err) {
         console.log(err.response)
         setLoading(false)
+        dispatch(setAlert(err.response.data.message, 'danger'))
         dispatch({ type: AUTH_ERROR })
     }
 }
